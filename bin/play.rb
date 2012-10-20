@@ -1,2 +1,2 @@
 require 'rps'
-puts RockPaperScissors.play
+puts RockPaperScissors.play(ARGV.shift ||'')
