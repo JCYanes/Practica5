@@ -1,0 +1,27 @@
+#!/usr/bin/ruby
+#Piedra papel tijeras
+
+class RockPaperScissors
+	@@defeat = {:rock => :scissors, :paper => :rock, :scissors => :paper}
+	@@throws = @@defeat.keys
+	class << self
+		def throw
+			@@throws.sample
+		end
+		def defeat
+			@@defeat
+		end
+		def play(player_throw)
+			player_throw = player_throw.to_sym
+			raise SyntaxError, "Se esperaba uno de los siguientes '{@@throws.join(', ')}'" unless @@throws.include?player_throw
+			computer_throw = @@throws.sample
+			if (player_throw == computer_throw)
+				puts "Empate."
+			elsif (player_throw == @@defeat[computer_throw])
+				puts "Computer wins: #{computer_throw} gana a #{player_throw}"
+			else
+				puts "Well done,You win: #{player_throw} gana a #{computer_throw}"
+			end
+		end 
+	end 
+end
